@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Network Traffic Watcher</title>
+    <!-- 引入 echarts.js -->
+    <script src="{% static 'js/echarts.min.js' %}"></script>
+    {% comment %} <script src="echarts.min.js"></script> {% endcomment %}
+</head>
+<body>
+    
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 1500px;height:600px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'Network Traffic Flow Watcher'
+            },
+            tooltip: {},
+            legend: {
+                data:['length']
+            },
+            xAxis: {
+                data: {{ip|safe}} // 防止引号转义
+            },
+            yAxis: {},
+            series: [{
+                name: 'Traffic flow',
+                type: 'bar',
+                data: {{flow}}
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    
+    <div class="copyright">
+    <br><br><br>
+    &copy;
+    <span class="with-love">
+        <i class="fa fa-user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">LacLic</span>
+    </div>
+    <div class="powered-by">Powered by <a href="https://docs.djangoproject.com/" class="theme-link" rel="noopener" target="_blank">Django</a> & <a href="https://echarts.apache.org/" class="theme-link" rel="noopener" target="_blank">Echart</a>
+    </div>
+</body>
+</html>
