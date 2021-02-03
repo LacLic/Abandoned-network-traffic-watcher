@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 """Failed"""
 # #!/usr/bin/env python3
 # import subprocess
@@ -17,6 +16,3 @@
 #         p2.terminate()
 #         print("Quit successfully!")
 #         break
-=======
-#!/usr/bin/env python3
->>>>>>> 1d501c22d6c4a71052b35e952a5a1b61959caf18
